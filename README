@@ -1,0 +1,79 @@
+####################################################################
+# Keyword Selection Independent Study
+####################################################################
+
+##### Author: Deekshita Vedula
+##### Date: 12/02/2023
+
+## Goal
+The study aims to use existing Python packages to better parse 
+responses to identify keywords defined by the client in these 
+responses and potentially recommend keywords for the lient to use.   
+
+## Research
+
+#### Initial Phase
+In order to identify which Python Natural Language Processing packages
+would be the most relevant for this project, I looked into the various NLP packages available that were compatible with Python. 
+
+The two key considerations that I was considering in this selection were:
+1. Number of Languages Supported
+2. Speed in production (currently secondary)
+
+I narrowed the options I found down to the following three packages based on their keyword selection and NLP capabilities:
+
+1. Gensim [https://github.com/RaRe-Technologies/gensim]
+    * Specializes identifying similarities between two documents
+    * Has keyword extraction
+
+2. Stanza [https://stanfordnlp.github.io/CoreNLP/]
+    * Fast in production
+    * Supports 66 languages
+
+3. spaCy
+    * Fast in production
+    * Supports 23 languages
+
+Based on my research into the 3 packages, it seemed like the best option to try first was Gensim due to its keyword extracction capabilities and speccialization in document similarities.
+
+#### Gensim [v1_gensim]
+By following an online tutorial by GeeksforGeeks [https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/] to better understand Gensim's features, I found two constraints as Gensim related to the project's goals:
+
+* The keyword extraction feature that would have been relevent to this project was not going to be supported with newer versions of Python
+
+* The keyword extraction feature supported few languages
+
+Based on these constarints, I decided to look into Stanza's functionalities instead. The exploration and tutorial used for Gensim are provided in the [v1_gensim] folder of this project folder.
+
+#### Stanza [v2_stanza]
+
+Stanza is a Python Natural Language Analysis Package created by the Stanford NLP Group. The reason I chose Stanza over spaCy was due to its support for more languages as that was important to the client.
+
+Using the documentation available on Stanza's website [https://stanfordnlp.github.io/stanza/], I installed Stanza and tried using some of their NLP features as seen in the [v2_stanza/1_stanza_initial_demo] folder. After being satisfied with Stanza's lemmatization of the sample response, I decided to use Stanza for the project.
+
+## Implementation
+
+#### Initialization
+Install Stanza with the instructions provided here [https://stanfordnlp.github.io/stanza/]
+
+
+#### Files
+
+[v2_stanza/2_matching_mentors_to_mentees]
+* Matches keywords provided by mentors to menteer' responses and returns a mapping of mentor index to the mentee indices that use these keywords' lemmas using Stanza. The active sheet ensures that the mentor and mentees ccompared are active (1) and not inactive (0).
+
+[v2_stanza/3_keywords]
+* Finds keywords in responses provided using lemmatization provided by Stanza
+
+
+## Future Goals
+The [v2_stanza/3_keywords] deliverable can be expanded to provide the following capabilities
+
+1. Recommend new keywords to extract based on common words and phrases in responses
+2. Group responses based on their similarities
+
+For these next steps, it may be helpful to incorporate data mining tools and obtain more sample responses.
+
+
+## Overall Learnings
+Throughout this project, I learned more about how powerful natural language tools can be and how to use these tools. Not having much prior experience with NLP, this project gave me the experience to understand how to use these tools for solving issues that appear in industry.
